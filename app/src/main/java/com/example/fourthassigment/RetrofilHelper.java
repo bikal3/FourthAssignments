@@ -8,10 +8,11 @@ import static com.example.fourthassigment.Url.BASE_URL;
 public class RetrofilHelper {
     private static Retrofit retrofit;
 
+
     public static Retrofit instance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(Url.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

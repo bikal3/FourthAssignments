@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.vp_viewpager);
         tabLayout = findViewById(R.id.tb_tabyout);
+
         LoginRegisterAdapter adapter= new LoginRegisterAdapter(getSupportFragmentManager());
         adapter.addFragment(new LoginFrag(),"Login");
         adapter.addFragment(new RegisterFrag(),"Register");

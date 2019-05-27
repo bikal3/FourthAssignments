@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddItem">
+
+
+<android.support.v7.widget.AppCompatButton
+    android:id="@+id/imagebutton"
+    android:hint="Select Image"
+    android:layout_marginTop="80dp"
+    android:layout_marginLeft="30dp"
+    style="@style/FlatButton"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    //android:background="@drawable/flatbuttonboarder"
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/iv_img_additem"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/imageboarder"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_additem"
+        android:layout_margin="32dp"
+        android:layout_below="@id/iv_img_additem"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_name_additem"
+            android:hint="Item Name"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_itemprize"
+        android:layout_below="@id/til_additem"
+        android:layout_margin="32dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_price_additem"
+            android:hint="Add Price"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_itemdesc"
+        android:layout_below="@id/til_itemprize"
+        android:layout_margin="32dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_desc_additem"
+            android:hint="Add Description"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_add_additem"
+        android:background="@drawable/buttonlayout"
+        android:layout_below="@id/til_itemdesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="Add ITEM"/>
+
+
+</RelativeLayout>
