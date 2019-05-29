@@ -2,7 +2,6 @@ package com.example.fourthassigment.Fragments;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,18 +13,13 @@ import android.widget.Toast;
 
 import com.example.fourthassigment.API.HeroAPI;
 import com.example.fourthassigment.Dashbaord;
-import com.example.fourthassigment.LoginRegisterResponse;
+import com.example.fourthassigment.Model.LoginRegisterResponse;
 import com.example.fourthassigment.R;
-import com.example.fourthassigment.RetrofilHelper;
+import com.example.fourthassigment.Retrofit.RetrofilHelper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Url;
-
-import static com.example.fourthassigment.Url.BASE_URL;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,6 +56,8 @@ public class LoginFrag extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_login:
+//                Intent intent=new Intent(getActivity(), Dashbaord.class);
+//                startActivity(intent);
                 checkUser();
                 break;
         }
@@ -69,15 +65,18 @@ public class LoginFrag extends Fragment implements View.OnClickListener {
     }
 
     private void checkUser() {
+        String user=username.getText().toString().trim();
+        String pass=password.getText().toString().trim();
+
         HeroAPI heroAPI = RetrofilHelper.instance().create(HeroAPI.class);
-        Call<LoginRegisterResponse> usersCall=heroAPI.checkUser(username.getText().toString().trim(),password.getText().toString().trim());
+        Call<LoginRegisterResponse> usersCall=heroAPI.checkUser(user,pass);
         usersCall.enqueue(new Callback<LoginRegisterResponse>() {
             @Override
             public void onResponse(Call<LoginRegisterResponse> call, Response<LoginRegisterResponse> response) {
                 if(!response.isSuccessful()){
                     Toast.makeText(getActivity(), "Please enter correct username or password", Toast.LENGTH_SHORT).show();
                 } else {
-                    if(!response.body().isSuccess()){
+                    if(response.body().isSuccess()){
                         Intent intent= new Intent(getActivity(), Dashbaord.class);
                         startActivity(intent);
 

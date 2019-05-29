@@ -1,4 +1,4 @@
-package com.example.fourthassigment;
+package com.example.fourthassigment.Model;
 
 public class LoginRegisterResponse {
     private boolean success;

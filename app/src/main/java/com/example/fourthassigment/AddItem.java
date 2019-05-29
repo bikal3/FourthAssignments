@@ -11,11 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fourthassigment.API.HeroAPI;
 import com.example.fourthassigment.Model.ItemModel;
+import com.example.fourthassigment.Model.ItemsModel;
+import com.example.fourthassigment.Retrofit.RetrofilHelper;
 
 import java.io.IOException;
 
@@ -91,12 +92,20 @@ public class AddItem extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void Save() {
-        String name=addname.getText().toString();
-        String desc=adddesc.getText().toString();
-        ItemModel itemModel= new ItemModel(name,desc);
+//        String name=addname.getText().toString();
+//        String desc=adddesc.getText().toString();
+//        ItemModel itemModel= new ItemModel(name,desc);
 
-        HeroAPI heroAPI=RetrofilHelper.instance().create(HeroAPI.class);
-        Call<Void>  itemcall= heroAPI.addHero(itemModel);
+        String name=addname.getText().toString();
+        String price=addprice.getText().toString();
+        String desc=adddesc.getText().toString();
+
+        ItemsModel itemsModel=new ItemsModel(name,price,desc);
+
+        HeroAPI heroAPI= RetrofilHelper.instance().create(HeroAPI.class);
+
+//        Call<Void>  itemcall= heroAPI.addHero(itemModel);
+        Call<Void>  itemcall= heroAPI.addItem(itemsModel);
 
         itemcall.enqueue(new Callback<Void>() {
             @Override

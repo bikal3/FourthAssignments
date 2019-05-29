@@ -17,6 +17,7 @@ public class Dashbaord extends AppCompatActivity implements View.OnClickListener
 
         additem=findViewById(R.id.btn_add);
         additem.setOnClickListener(this);
+
     }
 
     @Override
