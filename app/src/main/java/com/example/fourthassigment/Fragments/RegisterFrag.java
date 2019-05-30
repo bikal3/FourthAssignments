@@ -68,7 +68,9 @@ public class RegisterFrag extends Fragment implements View.OnClickListener {
         String pass=password.getText().toString();
 
         UserModel userModel=new UserModel(fname,lname,user,pass);
+
         HeroAPI heroAPI = RetrofilHelper.instance().create(HeroAPI.class);
+
         Call<Void> usercall=heroAPI.addUser(userModel);
 
         usercall.enqueue(new Callback<Void>() {

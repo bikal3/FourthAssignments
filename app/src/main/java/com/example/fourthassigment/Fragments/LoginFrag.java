@@ -69,28 +69,22 @@ public class LoginFrag extends Fragment implements View.OnClickListener {
         String pass=password.getText().toString().trim();
 
         HeroAPI heroAPI = RetrofilHelper.instance().create(HeroAPI.class);
-        Call<LoginRegisterResponse> usersCall=heroAPI.checkUser(user,pass);
-        usersCall.enqueue(new Callback<LoginRegisterResponse>() {
+        Call<String> logincall=heroAPI.login(user,pass);
+        logincall.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<LoginRegisterResponse> call, Response<LoginRegisterResponse> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(getActivity(), "Please enter correct username or password", Toast.LENGTH_SHORT).show();
-                } else {
-                    if(response.body().isSuccess()){
-                        Intent intent= new Intent(getActivity(), Dashbaord.class);
-                        startActivity(intent);
-
-
-                    }
-                }
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(getActivity(), "Sucess", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity(),Dashbaord.class);
+                startActivity(intent);
             }
 
             @Override
-            public void onFailure(Call<LoginRegisterResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error"+ t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
+
 
 
 
